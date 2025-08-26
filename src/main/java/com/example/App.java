@@ -32,26 +32,30 @@ public class App {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Login as:");
-        System.out.println("1. Student");
-        System.out.println("2. Teacher");
-        System.out.print("Enter choice: ");
+        System.out.println("\n--- School Management System ---");
+        System.out.println("1. Login as Student");
+        System.out.println("2. Login as Teacher");
+        System.out.print("Enter your choice: ");
         int loginChoice = sc.nextInt();
-        sc.nextLine();
+        sc.nextLine(); // consume newline
 
-        if (loginChoice == 1) {
-            // Student Portal (dummy for now)
-            System.out.println("\n--- Student Portal ---");
-            System.out.println("1. View Profile (coming soon)");
-            System.out.println("2. View Grades (coming soon)");
-            System.out.println("3. View Attendance (coming soon)");
-            System.out.println("👉 For now, only Teacher portal is functional.");
+        if (loginChoice == 1) {   // Student Login
+            System.out.print("Enter your Student ID: ");
+            int id = sc.nextInt();
+            sc.nextLine();
+
+            Student s = service.getStudent(id);
+            if (s != null) {
+                System.out.println("\n--- Your Profile ---");
+                System.out.println(s);
+            } else {
+                System.out.println("❌ Student not found!");
+            }
         }
-        else if (loginChoice == 2) {
-            // Teacher Portal (CRUD you already have)
+        else if (loginChoice == 2) {   // Teacher Login
             int choice;
             do {
-                System.out.println("\n--- Teacher Portal ---");
+                System.out.println("\n--- Teacher Menu ---");
                 System.out.println("1. Add Student");
                 System.out.println("2. View Student by ID");
                 System.out.println("3. View All Students");
@@ -60,7 +64,7 @@ public class App {
                 System.out.println("6. Exit");
                 System.out.print("Enter your choice: ");
                 choice = sc.nextInt();
-                sc.nextLine();
+                sc.nextLine(); // consume newline
 
                 switch (choice) {
                     case 1 -> {
@@ -124,9 +128,10 @@ public class App {
                         service.deleteStudent(id);
                         System.out.println("✅ Student deleted successfully!");
                     }
-                    case 6 -> System.out.println("👋 Exiting Teacher Portal...");
+                    case 6 -> System.out.println("👋 Exiting Teacher Menu...");
                     default -> System.out.println("⚠️ Invalid choice. Try again!");
                 }
+
             } while (choice != 6);
         }
         else {
