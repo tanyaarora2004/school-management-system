@@ -15,14 +15,14 @@ public class StudentDaoImpl implements StudentDao {
     private RowMapper<Student> rowMapper = new RowMapper<Student>() {
         @Override
         public Student mapRow(ResultSet rs, int rowNum) throws SQLException {
-            return new Student(rs.getInt("id"), rs.getString("name"), rs.getString("email"));
+            return new Student(rs.getInt("id"), rs.getString("name"), rs.getString("email"), rs.getInt("age"), rs.getString("grade"));
         }
     };
 
     @Override
     public void create(Student s) {
-        jdbcTemplate.update("INSERT INTO students (id, name, email) VALUES (?, ?, ?)",
-                s.getId(), s.getName(), s.getEmail());
+        jdbcTemplate.update("INSERT INTO students (id, name, email, age, grade) VALUES (?, ?, ?, ?, ?)",
+                s.getId(), s.getName(), s.getEmail(), s.getAge(), s.getGrade());
     }
 
     @Override
@@ -37,8 +37,8 @@ public class StudentDaoImpl implements StudentDao {
 
     @Override
     public void update(Student s) {
-        jdbcTemplate.update("UPDATE students SET name=?, email=? WHERE id=?",
-                s.getName(), s.getEmail(), s.getId());
+        jdbcTemplate.update("UPDATE students SET name=?, email=?, age=?, grade=? WHERE id=?",
+                s.getName(), s.getEmail(),s.getAge(), s.getGrade(), s.getId());
     }
 
     @Override
