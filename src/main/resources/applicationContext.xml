@@ -18,6 +18,8 @@
         <constructor-arg ref="dataSource"/>
     </bean>
 
+    <!-- ====================== Student Beans ====================== -->
+
     <!-- DAO -->
     <bean id="studentDao" class="com.example.dao.StudentDaoImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
@@ -27,5 +29,18 @@
     <bean id="studentService" class="com.example.service.StudentServiceImpl">
         <property name="studentDao" ref="studentDao"/>
     </bean>
+
+    <!-- ====================== Attendance Beans ====================== -->
+
+    <!-- Attendance DAO -->
+    <bean id="attendanceDao" class="com.example.dao.AttendanceDaoImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
+    <!-- Attendance Service -->
+    <bean id="attendanceService" class="com.example.service.AttendanceServiceImpl">
+        <property name="attendanceDao" ref="attendanceDao"/>
+    </bean>
+
 
 </beans>

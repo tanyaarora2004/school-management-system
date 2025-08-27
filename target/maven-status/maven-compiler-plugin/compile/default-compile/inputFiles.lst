@@ -1,6 +1,11 @@
 C:\Users\artan\school-management\src\main\java\com\example\App.java
+C:\Users\artan\school-management\src\main\java\com\example\dao\AttendanceDao.java
+C:\Users\artan\school-management\src\main\java\com\example\dao\AttendanceDaoImpl.java
 C:\Users\artan\school-management\src\main\java\com\example\dao\StudentDao.java
 C:\Users\artan\school-management\src\main\java\com\example\dao\StudentDaoImpl.java
+C:\Users\artan\school-management\src\main\java\com\example\model\Attendance.java
 C:\Users\artan\school-management\src\main\java\com\example\model\Student.java
+C:\Users\artan\school-management\src\main\java\com\example\service\AttendanceService.java
+C:\Users\artan\school-management\src\main\java\com\example\service\AttendanceServiceImpl.java
 C:\Users\artan\school-management\src\main\java\com\example\service\StudentService.java
 C:\Users\artan\school-management\src\main\java\com\example\service\StudentServiceImpl.java
