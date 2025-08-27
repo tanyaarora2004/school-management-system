@@ -39,21 +39,43 @@ public class App {
         int loginChoice = sc.nextInt();
         sc.nextLine(); // consume newline
 
-        if (loginChoice == 1) {   // Student Login
-            System.out.print("Enter your Student ID: ");
-            int id = sc.nextInt();
-            sc.nextLine();
+        if (loginChoice == 1) {
+            // Student portal: View profile, grades, attendance
+            int choice = 0;
+            do {
+                System.out.println("\n--- Student Menu ---");
+                System.out.println("1. See Profile");
+                System.out.println("2. See Grades");
+                System.out.println("3. See Attendance");
+                System.out.println("4. Exit");
+                System.out.print("Enter your choice: ");
+                try {
+                    choice = Integer.parseInt(sc.nextLine().trim());
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid input. Try again.");
+                    continue;
+                }
 
-            Student s = service.getStudent(id);
-            if (s != null) {
-                System.out.println("\n--- Your Profile ---");
-                System.out.println(s);
-            } else {
-                System.out.println("❌ Student not found!");
-            }
-        }
-        else if (loginChoice == 2) {   // Teacher Login
-            int choice;
+                switch (choice) {
+                    case 1 -> {
+                        System.out.print("Enter your Student ID: ");
+                        int id = sc.nextInt();
+                        sc.nextLine();
+                        Student s = service.getStudent(id);
+                        if (s != null) System.out.println(s);
+                        else System.out.println("❌ Student not found!");
+                    }
+                    case 2 -> System.out.println("📘 Grades feature coming soon...");
+                    case 3 -> System.out.println("📊 Attendance feature coming soon...");
+                    case 4 -> System.out.println("👋 Exiting Student Portal...");
+                    default -> System.out.println("⚠️ Invalid choice. Try again!");
+                }
+
+            } while (choice != 4);
+
+        } else if (loginChoice == 2) {
+            // Teacher portal: CRUD + attendance (attendance currently "coming soon")
+            int choice = 0; // ✅ initialized here
             do {
                 System.out.println("\n--- Teacher Menu ---");
                 System.out.println("1. Add Student");
@@ -61,10 +83,15 @@ public class App {
                 System.out.println("3. View All Students");
                 System.out.println("4. Update Student");
                 System.out.println("5. Delete Student");
-                System.out.println("6. Exit");
+                System.out.println("6. Take Attendance (coming soon)");
+                System.out.println("7. Exit");
                 System.out.print("Enter your choice: ");
-                choice = sc.nextInt();
-                sc.nextLine(); // consume newline
+                try {
+                    choice = Integer.parseInt(sc.nextLine().trim());
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid input. Try again.");
+                    continue;
+                }
 
                 switch (choice) {
                     case 1 -> {
@@ -128,13 +155,14 @@ public class App {
                         service.deleteStudent(id);
                         System.out.println("✅ Student deleted successfully!");
                     }
-                    case 6 -> System.out.println("👋 Exiting Teacher Menu...");
+                    case 6 -> System.out.println("📝 Attendance feature coming soon...");
+                    case 7 -> System.out.println("👋 Exiting Teacher Portal...");
                     default -> System.out.println("⚠️ Invalid choice. Try again!");
                 }
 
-            } while (choice != 6);
-        }
-        else {
+            } while (choice != 7);
+
+        } else {
             System.out.println("⚠️ Invalid login choice!");
         }
 
