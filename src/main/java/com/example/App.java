@@ -25,7 +25,7 @@ public class App {
                     name VARCHAR(50),
                     email VARCHAR(50),
                     age INT,
-                    grade VARCHAR(10)
+                    rollNo INT
                 )
             """);
         }
@@ -105,9 +105,10 @@ public class App {
                         System.out.print("Enter Age: ");
                         int age = sc.nextInt();
                         sc.nextLine();
-                        System.out.print("Enter Grade: ");
-                        String grade = sc.nextLine();
-                        service.addStudent(new Student(id, name, email, age, grade));
+                        System.out.print("Enter Roll No: ");
+                        int rollNo = sc.nextInt();
+                        sc.nextLine();
+                        service.addStudent(new Student(id, name, email, age, rollNo));
                         System.out.println("✅ Student added successfully!");
                     }
                     case 2 -> {
@@ -136,12 +137,13 @@ public class App {
                             System.out.print("Enter new Age: ");
                             int age = sc.nextInt();
                             sc.nextLine();
-                            System.out.print("Enter new Grade: ");
-                            String grade = sc.nextLine();
+                            System.out.print("Enter new Roll No: ");
+                            int rollNo = sc.nextInt();
+                            sc.nextLine();
                             s.setName(name);
                             s.setEmail(email);
                             s.setAge(age);
-                            s.setGrade(grade);
+                            s.setRollNo(rollNo);
                             service.updateStudent(s);
                             System.out.println("✅ Student updated successfully!");
                         } else {

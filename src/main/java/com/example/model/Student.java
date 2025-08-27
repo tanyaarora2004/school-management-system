@@ -5,16 +5,16 @@ public class Student {
     private String name;
     private String email;
     private int age;
-    private String grade;
+    private int rollNo;
 
     public Student() {}
 
-    public Student(int id, String name, String email, int age, String grade) {
+    public Student(int id, String name, String email, int age, int rollNo) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.age = age;
-        this.grade = grade;
+        this.rollNo = rollNo;
     }
 
     // Getters & Setters
@@ -30,8 +30,8 @@ public class Student {
     public int getAge() { return age; }
     public void setAge(int age) { this.age = age; }
 
-    public String getGrade() { return grade; }
-    public void setGrade(String grade) { this.grade = grade; }
+    public int getRollNo() { return rollNo; }
+    public void setRollNo(int rollNo) { this.rollNo = rollNo; }
 
     @Override
     public String toString() {
@@ -40,7 +40,7 @@ public class Student {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", age=" + age +
-                ", grade='" + grade + '\'' +
+                ", Roll No='" + rollNo + '\'' +
                 '}';
     }
 }
